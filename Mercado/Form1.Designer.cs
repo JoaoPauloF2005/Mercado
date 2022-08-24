@@ -33,7 +33,7 @@
             this.lblQuant = new System.Windows.Forms.Label();
             this.lblValor_Unit = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
-            this.txtQuant = new System.Windows.Forms.TextBox();
+            this.txtQntd = new System.Windows.Forms.TextBox();
             this.txtValor_Unit = new System.Windows.Forms.TextBox();
             this.btnInserir = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
@@ -50,7 +50,7 @@
             this.lblItensGrade = new System.Windows.Forms.Label();
             this.btnCancelarVenda = new System.Windows.Forms.Button();
             this.btnNovaVenda = new System.Windows.Forms.Button();
-            this.lblVenda = new System.Windows.Forms.Label();
+            this.txtVenda = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMercado)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,12 +101,12 @@
             this.txtDescricao.Size = new System.Drawing.Size(266, 20);
             this.txtDescricao.TabIndex = 4;
             // 
-            // txtQuant
+            // txtQntd
             // 
-            this.txtQuant.Location = new System.Drawing.Point(184, 105);
-            this.txtQuant.Name = "txtQuant";
-            this.txtQuant.Size = new System.Drawing.Size(121, 20);
-            this.txtQuant.TabIndex = 5;
+            this.txtQntd.Location = new System.Drawing.Point(184, 105);
+            this.txtQntd.Name = "txtQntd";
+            this.txtQntd.Size = new System.Drawing.Size(121, 20);
+            this.txtQntd.TabIndex = 5;
             // 
             // txtValor_Unit
             // 
@@ -135,6 +135,7 @@
             this.btnRemover.TabIndex = 8;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
             // 
             // dgvMercado
             // 
@@ -148,6 +149,7 @@
             this.dgvMercado.Name = "dgvMercado";
             this.dgvMercado.Size = new System.Drawing.Size(482, 179);
             this.dgvMercado.TabIndex = 9;
+            this.dgvMercado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMercado_CellContentClick);
             // 
             // descricao
             // 
@@ -189,6 +191,7 @@
             this.btnAlterar.TabIndex = 18;
             this.btnAlterar.Text = "ALTERAR";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // label6
             // 
@@ -206,9 +209,9 @@
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.Location = new System.Drawing.Point(123, 526);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(78, 24);
+            this.lblTotal.Size = new System.Drawing.Size(73, 24);
             this.lblTotal.TabIndex = 20;
-            this.lblTotal.Text = "R$ 0, 00";
+            this.lblTotal.Text = "R$ 0,00";
             // 
             // label7
             // 
@@ -238,6 +241,7 @@
             this.btnCancelarVenda.TabIndex = 23;
             this.btnCancelarVenda.Text = "CANCELAR VENDA";
             this.btnCancelarVenda.UseVisualStyleBackColor = true;
+            this.btnCancelarVenda.Click += new System.EventHandler(this.btnCancelarVenda_Click);
             // 
             // btnNovaVenda
             // 
@@ -247,24 +251,22 @@
             this.btnNovaVenda.TabIndex = 24;
             this.btnNovaVenda.Text = "NOVA VENDA";
             this.btnNovaVenda.UseVisualStyleBackColor = true;
+            this.btnNovaVenda.Click += new System.EventHandler(this.btnNovaVenda_Click);
             // 
-            // lblVenda
+            // txtVenda
             // 
-            this.lblVenda.AutoSize = true;
-            this.lblVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVenda.ForeColor = System.Drawing.Color.Maroon;
-            this.lblVenda.Location = new System.Drawing.Point(141, 17);
-            this.lblVenda.Name = "lblVenda";
-            this.lblVenda.Size = new System.Drawing.Size(20, 24);
-            this.lblVenda.TabIndex = 25;
-            this.lblVenda.Text = "1";
+            this.txtVenda.Location = new System.Drawing.Point(139, 22);
+            this.txtVenda.Name = "txtVenda";
+            this.txtVenda.Size = new System.Drawing.Size(138, 20);
+            this.txtVenda.TabIndex = 26;
+            this.txtVenda.TextChanged += new System.EventHandler(this.txtVenda_TextChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 644);
-            this.Controls.Add(this.lblVenda);
+            this.Controls.Add(this.txtVenda);
             this.Controls.Add(this.btnNovaVenda);
             this.Controls.Add(this.btnCancelarVenda);
             this.Controls.Add(this.lblItensGrade);
@@ -278,7 +280,7 @@
             this.Controls.Add(this.btnRemover);
             this.Controls.Add(this.btnInserir);
             this.Controls.Add(this.txtValor_Unit);
-            this.Controls.Add(this.txtQuant);
+            this.Controls.Add(this.txtQntd);
             this.Controls.Add(this.txtDescricao);
             this.Controls.Add(this.lblValor_Unit);
             this.Controls.Add(this.lblQuant);
@@ -299,7 +301,7 @@
         private System.Windows.Forms.Label lblQuant;
         private System.Windows.Forms.Label lblValor_Unit;
         private System.Windows.Forms.TextBox txtDescricao;
-        private System.Windows.Forms.TextBox txtQuant;
+        private System.Windows.Forms.TextBox txtQntd;
         private System.Windows.Forms.TextBox txtValor_Unit;
         private System.Windows.Forms.Button btnInserir;
         private System.Windows.Forms.Button btnRemover;
@@ -316,7 +318,7 @@
         private System.Windows.Forms.Label lblItensGrade;
         private System.Windows.Forms.Button btnCancelarVenda;
         private System.Windows.Forms.Button btnNovaVenda;
-        private System.Windows.Forms.Label lblVenda;
+        private System.Windows.Forms.TextBox txtVenda;
     }
 }
 
